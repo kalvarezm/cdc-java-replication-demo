@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    application:
+      name: cdc-java-replication
+    # active local-full-sql | poc
+    active: local-full-sql

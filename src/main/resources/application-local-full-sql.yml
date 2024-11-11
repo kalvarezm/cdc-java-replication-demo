@@ -1,0 +1,11 @@
+spring:
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: always
+    wait-for-jobs-to-complete-on-shutdown: true
+logging:
+  level:
+    root: INFO
+  file:
+    name: logs/replication.log

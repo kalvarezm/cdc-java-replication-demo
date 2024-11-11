@@ -1,0 +1,382 @@
+jobs:
+  csv_path: C:\Users\kevin.alvarezm\Documents\nuam\PC Secretarial\SQL_SERVER\PSNBAS-POC\CDC_DEMO
+  partitions:
+    - name: P10
+      description: P10 partition
+      # Higher value, higher priority
+      default_priority: 5
+      # Every second starting at second :00, every minute, every hour between 07am and 23pm, of every day
+      default_cron: 0/3 * * ? * * *
+      default_databases:
+        - PSNBAS
+      active: true
+      tables:
+        - source: TBACMI
+          target: TBACMI
+          active: true
+        - source: TBCFMI
+          target: TBCFMI
+          active: true #Ojo
+        - source: TBFUMI
+          target: TBFUMI
+          active: true
+        - source: TBIFTR
+          target: TBIFTR
+          active: true
+        - source: TBORTR
+          target: TBORTR
+          active: true
+        - source: TBOTPTAS
+          target: TBOTPTAS
+          active: true
+        - source: TBRFTR
+          target: TBRFTR
+          active: true
+        - source: TBRVMI
+          target: TBRVMI
+          active: true
+        - source: TBRVPCDI
+          target: TBRVPCDI
+          active: true
+        - source: TBRVTR
+          target: TBRVTR
+          active: true
+        - source: TBRVTRBO
+          target: TBRVTRBO
+          active: true
+        - source: TBRVTRMT
+          target: TBRVTRMT
+          active: true
+        - source: TBTIB
+          target: TBTIB
+          active: true
+        - source: TBTOM
+          target: TBTOM
+          active: true
+        - source: TBUTPARA
+          target: TBUTPARA
+          active: true
+
+    - name: P11
+      description: P11 partition
+      # Higher value, higher priority
+      default_priority: 5
+      # Every second starting at second :00, every minute, every hour between 07am and 23pm, of every day
+      default_cron: 0/3 * * ? * * *
+      default_databases:
+        - PSNBAS
+      active: true
+      tables:
+        - source: TBALBENC
+          target: TBALBENC
+          active: true
+        - source: TBALCIER
+          target: TBALCIER
+          active: true
+        - source: TBAVI
+          target: TBAVI
+          active: true
+        - source: TBBOMTPR
+          target: TBBOMTPR
+          active: false
+        - source: TBSILOGC
+          target: TBSILOGC
+          active: true
+
+    - name: P12
+      description: P12 partition
+      # Higher value, higher priority
+      default_priority: 5
+      # Every second starting at second :00, every minute, every hour between 07am and 23pm, of every day
+      default_cron: 0/3 * * ? * * *
+      default_databases:
+        - PSNBAS
+      active: true
+      tables:
+        - source: TBBOMTPR
+          target: TBBOMTPR
+          active: true
+        - source: TBCORPTA
+          target: TBCORPTA
+          active: true
+        - source: TBFUMI
+          target: TBFUMI
+          active: false
+        - source: TBIEPF
+          target: TBIEPF
+          active: true
+        - source: TBIEPFDI
+          target: TBIEPFDI
+          active: true
+        - source: TBIEREHO
+          target: TBIEREHO
+          active: true
+        - source: TBIFIHPR
+          target: TBIFIHPR
+          active: true
+        - source: TBIFTMPR
+          target: TBIFTMPR
+          active: true
+        - source: TBMOMI
+          target: TBMOMI
+          active: true
+        - source: TBPRAJHI
+          target: TBPRAJHI
+          active: true
+        - source: TBRFMI
+          target: TBRFMI
+          active: true
+        - source: TBRFTMPR
+          target: TBRFTMPR
+          active: true
+        - source: TBRFTMTA
+          target: TBRFTMTA
+          active: true
+        - source: TBRVPCDI
+          target: TBRVPCDI
+          active: false
+        - source: TBUTPARA
+          target: TBUTPARA
+          active: false
+
+    - name: P13
+      description: P13 partition
+      # Higher value, higher priority
+      default_priority: 5
+      # Every second starting at second :00, every minute, every hour between 07am and 23pm, of every day
+      default_cron: 0/3 * * ? * * *
+      default_databases:
+        - PSNBAS
+      active: true
+      tables:
+        - source: TBACFVC
+          target: TBACFVC
+          active: true
+        - source: TBACINDI
+          target: TBACINDI
+          active: true
+        - source: TBACMI
+          target: TBACMI
+          active: false
+        - source: TBACRENT
+          target: TBACRENT
+          active: true
+        - source: TBACVCLO
+          target: TBACVCLO
+          active: true
+        - source: TBALGFON
+          target: TBALGFON
+          active: true
+        - source: TBALRIES
+          target: TBALRIES
+          active: true
+        - source: TBALRITN
+          target: TBALRITN
+          active: true
+        - source: TBASACC
+          target: TBASACC
+          active: false
+        - source: TBASBAL
+          target: TBASBAL
+          active: true
+        - source: TBASDIR
+          target: TBASDIR
+          active: true
+        - source: TBASPAR
+          target: TBASPAR
+          active: true
+        - source: TBASSER
+          target: TBASSER
+          active: true
+        - source: TBASSOC
+          target: TBASSOC
+          active: true
+        - source: TBCFMI
+          target: TBCFMI
+          active: false
+        - source: TBCLAGDT
+          target: TBCLAGDT
+          active: true
+        - source: TBCLCOMP
+          target: TBCLCOMP
+          active: true
+        - source: TBCLCTR
+          target: TBCLCTR
+          active: true
+        - source: TBCLOPOT
+          target: TBCLOPOT
+          active: true
+        - source: TBCLREDT
+          target: TBCLREDT
+          active: true
+        - source: TBCORPTA
+          target: TBCORPTA
+          active: false
+        - source: TBCUDCO
+          target: TBCUDCO
+          active: true
+        - source: TBCUDET
+          target: TBCUDET
+          active: true
+        - source: TBCUOFM
+          target: TBCUOFM
+          active: true
+        - source: TBCUVCDE
+          target: TBCUVCDE
+          active: true
+        - source: TBFUMI
+          target: TBFUMI
+          active: false
+        - source: TBIFTMCR
+          target: TBIFTMCR
+          active: true
+        - source: TBINVC
+          target: TBINVC
+          active: true
+        - source: TBPRAJHI
+          target: TBPRAJHI
+          active: false
+        - source: TBRFIHGN
+          target: TBRFIHGN
+          active: true
+        - source: TBRFIPRC
+          target: TBRFIPRC
+          active: true
+        - source: TBRFMI
+          target: TBRFMI
+          active: false
+        - source: TBRFRTMD
+          target: TBRFRTMD
+          active: true
+        - source: TBRFTEBE
+          target: TBRFTEBE
+          active: true
+        - source: TBRFTIRM
+          target: TBRFTIRM
+          active: true
+        - source: TBRFTMCL
+          target: TBRFTMCL
+          active: true
+        - source: TBRFTMCS
+          target: TBRFTMCS
+          active: true
+        - source: TBRFTMPR
+          target: TBRFTMPR
+          active: false
+        - source: TBRFTMTA
+          target: TBRFTMTA
+          active: false
+        - source: TBRVMI
+          target: TBRVMI
+          active: false
+        - source: TBRVPCDI
+          target: TBRVPCDI
+          active: false
+        - source: TBTIB
+          target: TBTIB
+          active: false
+        - source: TBTRBNCH
+          target: TBTRBNCH
+          active: true
+        - source: TBUTPARA
+          target: TBUTPARA
+          active: false
+        - source: TBXACMI
+          target: TBXACMI
+          active: false
+
+    - name: P14
+      description: P14 partition
+      # Higher value, higher priority
+      default_priority: 5
+      # Every second starting at second :00, every minute, every hour between 07am and 23pm, of every day
+      default_cron: 0/3 * * ? * * *
+      default_databases:
+        - PSNBAS
+      active: true
+      tables:
+        - source: TBACCADI
+          target: TBACCADI
+          active: true
+        - source: TBACCDAT
+          target: TBACCDAT
+          active: true
+        - source: TBCOCUEN
+          target: TBCOCUEN
+          active: true
+        - source: TBCUDCO
+          target: TBCUDCO
+          active: false
+        - source: TBCUDET
+          target: TBCUDET
+          active: false
+        - source: TBCUMOVI
+          target: TBCUMOVI
+          active: true
+        - source: TBCUUTI
+          target: TBCUUTI
+          active: true
+        - source: TBRFMI
+          target: TBRFMI
+          active: false
+        - source: TBRFSE
+          target: TBRFSE
+          active: true
+        - source: TBRFTD
+          target: TBRFTD
+          active: true
+        - source: TBSOCNRG
+          target: TBSOCNRG
+          active: true
+        - source: TBTPCUEN
+          target: TBTPCUEN
+          active: true
+        - source: TBTPPART
+          target: TBTPPART
+          active: true
+
+    - name: P15
+      description: P15 partition
+      # Higher value, higher priority
+      default_priority: 5
+      # Every second starting at second :00, every minute, every hour between 07am and 23pm, of every day
+      default_cron: 0/3 * * ? * * *
+      default_databases:
+        - PSNBAS
+      active: true
+      tables:
+        - source: TBCLCICA
+          target: TBCLCICA
+          active: true
+        - source: TBCLCOMP
+          target: TBCLCOMP
+          active: false
+        - source: TBCLOPER
+          target: TBCLOPER
+          active: true
+
+    - name: P16
+      description: P16 partition
+      # Higher value, higher priority
+      default_priority: 5
+      # Every second starting at second :00, every minute, every hour between 07am and 23pm, of every day
+      default_cron: 0/3 * * ? * * *
+      default_databases:
+        - PSNBAS
+      active: true
+      tables:
+        - source: TBACINDI
+          target: TBACINDI
+          active: false
+        - source: TBINDICE
+          target: TBINDICE
+          active: true
+        - source: TBINPESO
+          target: TBINPESO
+          active: true
+        - source: TBRFINDI
+          target: TBRFINDI
+          active: true
+        - source: TBUTPTOS
+          target: TBUTPTOS
+          active: true

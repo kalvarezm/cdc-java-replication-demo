@@ -1,0 +1,133 @@
+databases:
+  jobStore:
+    key: QUARTZ
+    description: Base de datos para Quartz
+    databaseName: QUARTZ
+    url: jdbc:h2:mem:QUARTZ;MODE=MySQL
+    username: sa
+    password: P@ssw0rd
+    driverClassName: org.h2.Driver
+    active: true
+    hikari:
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      keepalive-time: 0
+      maximum-pool-size: 100
+      minimum-idle: 100
+      idle-timeout: 600000
+      auto-commit: true
+      connection-test-query: SELECT 1
+      pool-name: HikariPool-QUARTZ
+  source:
+    key: PSNBAS
+    description: Base de datos origen
+    databaseName: PSNBAS
+    schema: dbo
+    url: jdbc:sqlserver://192.168.1.12:2000;databaseName=PSNBAS;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: P@ssw0rd
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    active: true
+    hikari:
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      keepalive-time: 0
+      maximum-pool-size: 30
+      minimum-idle: 30
+      idle-timeout: 600000
+      auto-commit: true
+      connection-test-query: SELECT 1
+      pool-name: HikariPool-PSNBAS-SRC
+  target:
+    - key: PSNBAS
+      description: Base de datos destino
+      databaseName: PSNBAS
+      schema: dbo
+      url: jdbc:sqlserver://192.168.1.12:2000;databaseName=PSNBAS;encrypt=true;trustServerCertificate=true
+      username: sa
+      password: P@ssw0rd
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      active: true
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        keepalive-time: 0
+        maximum-pool-size: 5
+        minimum-idle: 5
+        idle-timeout: 600000
+        auto-commit: true
+        connection-test-query: SELECT 1
+        pool-name: HikariPool-PSNBAS-TRG
+      batch:
+        select: 10000
+        chunk: 1000
+        chunks-by-job: 50
+    - key: NEGBAS
+      description: Base de datos destino
+      databaseName: NEGBAS
+      schema: dbo
+      url: jdbc:sqlserver://192.168.1.12:2001;databaseName=NEGBAS;encrypt=true;trustServerCertificate=true
+      username: sa
+      password: P@ssw0rd
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      active: false
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        keepalive-time: 0
+        maximum-pool-size: 20
+        minimum-idle: 20
+        idle-timeout: 600000
+        auto-commit: true
+        connection-test-query: SELECT 1
+        pool-name: HikariPool-NEGBAS
+      batch:
+        select: 10000
+        chunk: 1000
+        chunks-by-job: 50
+    - key: NEGINI1
+      description: Base de datos destino
+      databaseName: NEGINI
+      schema: dbo
+      url: jdbc:sqlserver://192.168.1.12:2002;databaseName=NEGINI1;encrypt=true;trustServerCertificate=true
+      username: sa
+      password: P@ssw0rd
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      active: false
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        keepalive-time: 0
+        maximum-pool-size: 20
+        minimum-idle: 20
+        idle-timeout: 600000
+        auto-commit: true
+        connection-test-query: SELECT 1
+        pool-name: HikariPool-NEGINI1
+      batch:
+        select: 10000
+        chunk: 1000
+        chunks-by-job: 50
+    - key: NEGINI2
+      description: Base de datos destino
+      databaseName: NEGINI
+      schema: dbo
+      url: jdbc:sqlserver://192.168.1.12:2003;databaseName=NEGINI2;encrypt=true;trustServerCertificate=true
+      username: sa
+      password: P@ssw0rd
+      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      active: false
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        keepalive-time: 0
+        maximum-pool-size: 20
+        minimum-idle: 20
+        idle-timeout: 600000
+        auto-commit: true
+        connection-test-query: SELECT 1
+        pool-name: HikariPool-NEGINI2
+      batch:
+        select: 10000
+        chunk: 1000
+        chunks-by-job: 50

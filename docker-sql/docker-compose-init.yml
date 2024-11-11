@@ -1,0 +1,76 @@
+services: 
+  psnbas:
+    command: >
+      /bin/bash -c "
+      /opt/mssql/bin/sqlservr &
+
+      echo '>>>>>>>>>> Testing SQL SERVER <<<<<<<<<<';
+      until /opt/mssql-tools/bin/sqlcmd -l 1 -S localhost -U sa -P 'P@ssw0rd' -Q 'SELECT 1' &> /dev/null; do
+        >&2 echo '>>>>>>>>>> SQL Server is unavailable - sleeping <<<<<<<<<<';
+        sleep 5;
+      done;
+      echo '>>>>>>>>>> SQL Server is ready - executing DATABASE script <<<<<<<<<<';
+      /opt/mssql-tools/bin/sqlcmd -l 5 -S localhost -U sa -P 'P@ssw0rd' -d master -i /var/opt/mssql/scripts/Database-PSNBAS.sql;
+      echo '>>>>>>>>>> SQL Server is ready - executing TABLES script <<<<<<<<<<';
+      /opt/mssql-tools/bin/sqlcmd -l 5 -S localhost -U sa -P 'P@ssw0rd' -d master -i /var/opt/mssql/scripts/Tables-PSNBAS.sql;  
+
+      sleep infinity;"       
+    volumes:
+      - ./scripts:/var/opt/mssql/scripts
+      
+  negbas:
+    command: >
+      /bin/bash -c "
+      /opt/mssql/bin/sqlservr &
+      
+      echo '>>>>>>>>>> Testing SQL SERVER <<<<<<<<<<';
+      until /opt/mssql-tools18/bin/sqlcmd -l 1 -S localhost -U sa -P 'P@ssw0rd' -C -Q 'SELECT 1' &> /dev/null; do
+        >&2 echo '>>>>>>>>>> SQL Server is unavailable - sleeping <<<<<<<<<<';
+        sleep 5;
+      done;
+      echo '>>>>>>>>>> SQL Server is ready - executing DATABASE script <<<<<<<<<<';
+      /opt/mssql-tools18/bin/sqlcmd -l 5 -S localhost -U sa -P 'P@ssw0rd' -C -d master -i /var/opt/mssql/scripts/Database-NEGBAS.sql;
+      echo '>>>>>>>>>> SQL Server is ready - executing TABLES script <<<<<<<<<<';
+      /opt/mssql-tools18/bin/sqlcmd -l 5 -S localhost -U sa -P 'P@ssw0rd' -C -d master -i /var/opt/mssql/scripts/Tables-NEGBAS.sql;  
+
+      sleep infinity;"       
+    volumes:
+      - ./scripts:/var/opt/mssql/scripts
+
+  negini1:
+    command: >
+      /bin/bash -c "
+      /opt/mssql/bin/sqlservr &
+
+      echo '>>>>>>>>>> Testing SQL SERVER <<<<<<<<<<';
+      until /opt/mssql-tools/bin/sqlcmd -l 1 -S localhost -U sa -P 'P@ssw0rd' -Q 'SELECT 1' &> /dev/null; do
+        >&2 echo '>>>>>>>>>> SQL Server is unavailable - sleeping <<<<<<<<<<';
+        sleep 5;
+      done;
+      echo '>>>>>>>>>> SQL Server is ready - executing DATABASE script <<<<<<<<<<';
+      /opt/mssql-tools/bin/sqlcmd -l 5 -S localhost -U sa -P 'P@ssw0rd' -d master -i /var/opt/mssql/scripts/Database-NEGINI1.sql;
+      echo '>>>>>>>>>> SQL Server is ready - executing TABLES script <<<<<<<<<<';
+      /opt/mssql-tools/bin/sqlcmd -l 5 -S localhost -U sa -P 'P@ssw0rd' -d master -i /var/opt/mssql/scripts/Tables-NEGINI1.sql;  
+
+      sleep infinity;"       
+    volumes:
+      - ./scripts:/var/opt/mssql/scripts 
+
+  negini2:
+    command: >
+      /bin/bash -c "
+      /opt/mssql/bin/sqlservr &
+
+      echo '>>>>>>>>>> Testing SQL SERVER <<<<<<<<<<';
+      until /opt/mssql-tools/bin/sqlcmd -l 1 -S localhost -U sa -P 'P@ssw0rd' -Q 'SELECT 1' &> /dev/null; do
+        >&2 echo '>>>>>>>>>> SQL Server is unavailable - sleeping <<<<<<<<<<';
+        sleep 5;
+      done;
+      echo '>>>>>>>>>> SQL Server is ready - executing DATABASE script <<<<<<<<<<';
+      /opt/mssql-tools/bin/sqlcmd -l 5 -S localhost -U sa -P 'P@ssw0rd' -d master -i /var/opt/mssql/scripts/Database-NEGINI2.sql;
+      echo '>>>>>>>>>> SQL Server is ready - executing TABLES script <<<<<<<<<<';
+      /opt/mssql-tools/bin/sqlcmd -l 5 -S localhost -U sa -P 'P@ssw0rd' -d master -i /var/opt/mssql/scripts/Tables-NEGINI2.sql;  
+
+      sleep infinity;"       
+    volumes:
+      - ./scripts:/var/opt/mssql/scripts      

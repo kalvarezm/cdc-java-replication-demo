@@ -1,0 +1,64 @@
+services: 
+  psnbas:
+    image: mcr.microsoft.com/mssql/server:2019-latest      
+    hostname: PSNBAS
+    user: root
+    ports:
+      - 2000:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+      - MSSQL_AGENT_ENABLED=true
+    volumes:
+      - psnbas-data:/var/opt/mssql/data
+      - psnbas-log:/var/opt/mssql/log
+      
+  negbas:  
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    hostname: NEGBAS
+    user: root
+    ports:
+      - 2001:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+      - MSSQL_PID=Developer
+    volumes:
+      - negbas-data:/var/opt/mssql/data
+      - negbas-log:/var/opt/mssql/log
+      
+  negini1:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    hostname: NEGINI1
+    user: root
+    ports:
+      - 2002:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+    volumes:
+      - negini1-data:/var/opt/mssql/data
+      - negini1-log:/var/opt/mssql/log  
+
+  negini2:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    hostname: NEGINI2
+    user: root
+    ports:
+      - 2003:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+    volumes:
+      - negini2-data:/var/opt/mssql/data
+      - negini2-log:/var/opt/mssql/log       
+      
+volumes:
+  psnbas-data: 
+  psnbas-log: 
+  negbas-data: 
+  negbas-log:  
+  negini1-data: 
+  negini1-log:
+  negini2-data: 
+  negini2-log:   
